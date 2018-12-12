@@ -1,0 +1,13 @@
+# python cache files
+*.pyc
+__pycache__
+
+# virtual environment
+ENV
+ENV2
+
+# vscode settings
+.vscode
+
+# training data
+recs/data
