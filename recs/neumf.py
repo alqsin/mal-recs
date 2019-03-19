@@ -2,7 +2,7 @@ import tensorflow as tf
 import numpy as np
 import random
 
-import ml1m
+import mal as dataset
 import constants as const
 
 def get_model(num_users, num_items, mf_dim=8, layers=[64,32,16,8],
@@ -78,19 +78,19 @@ def get_model(num_users, num_items, mf_dim=8, layers=[64,32,16,8],
 def get_train_data():
     # convert data to 0/1 labels depending on whether or not items
     # have been rated by users
-    df = ml1m.read_processed_data()
+    df = dataset.read_processed_data()
 
     user_input, item_input, labels = [], [], []
 
-    num_users = len(df[ml1m.USER_COL].unique())
-    num_items = len(df[ml1m.ITEM_COL].unique())
+    num_users = len(df[dataset.USER_COL].unique())
+    num_items = len(df[dataset.ITEM_COL].unique())
 
     user_rated = (-1, [])
     for _, row in df.iterrows():
-        curr_user = row[ml1m.USER_COL]
+        curr_user = row[dataset.USER_COL]
         # add positive instance
         user_input.append(curr_user)
-        item_input.append(row[ml1m.ITEM_COL])
+        item_input.append(row[dataset.ITEM_COL])
         labels.append(1)
 
         # check which items are rated by current user
@@ -99,7 +99,7 @@ def get_train_data():
         if user_rated[0] != curr_user:
             user_rated = (
                 curr_user,
-                df.loc[df[ml1m.USER_COL] == curr_user][ml1m.ITEM_COL].values
+                df.loc[df[dataset.USER_COL] == curr_user][dataset.ITEM_COL].values
             )
 
         # add negative instances
