@@ -7,7 +7,7 @@ RAW_RATINGS = 'data/mal/animelists_cleaned.csv'
 DATA_FOLDER = 'data/mal'
 PROCESSED_RATINGS = os.path.join(DATA_FOLDER, 'mal_processed.csv')
 USER_MAP_FILE = os.path.join(DATA_FOLDER, 'user_map.csv')
-ITEM_MAP_FILE = os.path.join(DATA_FOLDER, 'movie_map.csv')
+ITEM_MAP_FILE = os.path.join(DATA_FOLDER, 'anime_map.csv')
 
 # ratings.dat file structure
 USER_COL = 'username'
